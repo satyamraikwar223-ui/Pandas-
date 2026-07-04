@@ -1,0 +1,95 @@
+📅 Day 1 – Pandas Introduction
+Pandas kya hai?
+
+Pandas Python ki ek library hai jo data ko manage, analyze aur clean karne ke liye use hoti hai.
+
+Iska use hota hai:
+
+1. Excel files read karna
+2. CSV files read karna
+3. Data filter karna
+4. Missing values handle karna
+5. Reports banana
+6. Data analysis aur AI/ML projects me
+
+Step 1: Install Pandas
+
+Terminal me:
+
+pip install pandas
+
+Import karne ke liye:
+
+import pandas as pd
+
+pd sirf ek short name (alias) hai.
+
+Step 2: Series kya hoti hai?
+
+Series ek single column ki tarah hoti hai.
+
+Example:
+
+import pandas as pd
+
+numbers = pd.Series([10, 20, 30, 40])
+
+print(numbers)
+
+Output:
+
+0    10
+1    20
+2    30
+3    40
+dtype: int64
+
+Yahan:
+
+Left side = Index
+Right side = Value
+Step 3: Apni Index Banana
+import pandas as pd
+
+marks = pd.Series(
+    [80, 90, 95],
+    index=["Ram", "Shyam", "Mohan"]
+)
+
+print(marks)
+
+Output:
+
+Ram      80
+Shyam    90
+Mohan    95
+dtype: int64
+Step 4: Kisi ek Value ko Access Karna
+print(marks["Ram"])
+
+Output:
+
+80
+Practice 1
+
+Ye code likho:
+
+import pandas as pd
+
+cities = pd.Series(
+    ["Bhopal", "Delhi", "Indore"],
+    index=["A", "B", "C"]
+)
+
+print(cities)
+print(cities["B"])
+🎯 Homework
+Ek Series banao jisme 5 fruits hon.
+Index me apna naam, dost ka naam, aur family members ke naam do.
+Kisi ek fruit ko print karo.
+
+Example:
+
+Satyam    Apple
+Rahul     Mango
+Rohit     Banana
