@@ -1,0 +1,214 @@
+🎉 Day-2 : DataFrame
+Topic: DataFrame (Pandas ka sabse important concept)
+
+Kal humne Series padhi thi. Aaj hum DataFrame seekhenge.
+
+📌 DataFrame kya hota hai?
+
+Agar Series = 1 Column hai,
+
+to
+
+DataFrame = Puri Table hai.
+
+Jaise Excel Sheet.
+
+Example:
+
+Name	Age	City
+Satyam	20	Bhopal
+Shivam	21	Indore
+Sachin	22	Delhi
+
+Ye pura DataFrame hai.
+
+Step 1 – DataFrame banana
+import pandas as pd
+
+student = {
+    "Name": ["Satyam", "Shivam", "Sachin"],
+    "Age": [20, 21, 22],
+    "City": ["Bhopal", "Indore", "Delhi"]
+}
+
+df = pd.DataFrame(student)
+
+print(df)
+Output
+      Name  Age     City
+0   Satyam   20   Bhopal
+1   Shivam   21   Indore
+2   Sachin   22    Delhi
+🤔 Samjho
+
+Ye Dictionary thi
+
+student = {
+    "Name": [...],
+    "Age": [...],
+    "City": [...]
+}
+
+Pandas ne ise table bana diya.
+
+Step 2 – Ek Column Access karna
+print(df["Name"])
+
+Output
+
+0    Satyam
+1    Shivam
+2    Sachin
+Name: Name, dtype: object
+
+Sirf Name column print hua.
+
+Step 3 – Multiple Columns
+print(df[["Name", "City"]])
+
+Output
+
+      Name     City
+0   Satyam   Bhopal
+1   Shivam   Indore
+2   Sachin    Delhi
+
+Dhyan do
+
+Single column
+
+df["Name"]
+
+Double column
+
+df[["Name", "City"]]
+
+Double brackets ([[ ]]) bahut important hain.
+
+Step 4 – head()
+
+Top rows dekhne ke liye
+
+print(df.head())
+
+Agar data bahut bada ho to
+
+print(df.head(2))
+
+Output
+
+      Name  Age     City
+0   Satyam   20   Bhopal
+1   Shivam   21   Indore
+Step 5 – tail()
+
+Last rows
+
+print(df.tail())
+
+Ya
+
+print(df.tail(1))
+Step 6 – Shape
+
+Rows aur Columns kitne hain?
+
+print(df.shape)
+
+Output
+
+(3,3)
+
+Matlab
+
+3 Rows
+3 Columns
+Step 7 – Columns
+print(df.columns)
+
+Output
+
+Index(['Name', 'Age', 'City'], dtype='object')
+🧠 Real World Example
+
+Company me Employee Data
+
+import pandas as pd
+
+employee = {
+    "Name": ["Rahul", "Aman", "Rohit"],
+    "Salary": [35000, 42000, 50000],
+    "Department": ["HR", "IT", "Finance"]
+}
+
+df = pd.DataFrame(employee)
+
+print(df)
+
+Isi tarah companies lakhon records store karti hain.
+
+🤖 AI Challenge
+
+ChatGPT se ye prompt do:
+
+"Create a pandas DataFrame of 10 students with Name, Age, Marks and City."
+
+Phir code ko khud run karo.
+
+Samajhne ki koshish karo:
+
+Dictionary kaha hai?
+DataFrame kaha ban raha hai?
+Columns kaise bane?
+📝 Practice Questions
+Q1
+
+Ye DataFrame banao
+
+Car	Price
+BMW	60
+Audi	55
+Tesla	75
+Q2
+
+Sirf Price column print karo.
+
+Q3
+
+Sirf Car column print karo.
+
+Q4
+
+head(2) print karo.
+
+Q5
+
+shape print karo.
+
+🎯 Homework
+
+Ek DataFrame banao jisme:
+
+Name
+Age
+Favourite Fruit
+City
+
+Minimum 5 records hone chahiye.
+
+Uske baad ye print karo:
+
+print(df)
+print(df["Name"])
+print(df.head(3))
+print(df.shape)
+📚 Aaj ka Revision
+
+✅ DataFrame kya hota hai
+✅ Dictionary → DataFrame
+✅ Single Column
+✅ Multiple Columns
+✅ head()
+✅ tail()
+✅ shape
+✅ columns
