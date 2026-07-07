@@ -1,0 +1,200 @@
+🎉 Pandas Course – Day 4/30
+📍 Topic: loc[] aur iloc[] (Rows aur Columns Access Karna)
+
+Aaj hum Pandas ke sabse important concepts me se ek seekhenge.
+
+Agar tum loc[] aur iloc[] achchhe se samajh gaye, to Pandas ka 50% kaam aasaan ho jayega.
+
+Sabse pehle DataFrame banao
+import pandas as pd
+
+student = {
+    "Name": ["Satyam", "Shivam", "Lakshya", "Rahul"],
+    "Age": [18, 20, 19, 21],
+    "City": ["Khajuraho", "Indore", "Bhopal", "Delhi"],
+    "Marks": [90, 85, 88, 92]
+}
+
+df = pd.DataFrame(student)
+
+print(df)
+
+Output:
+
+      Name  Age        City  Marks
+0   Satyam   18  Khajuraho     90
+1   Shivam   20     Indore     85
+2  Lakshya   19     Bhopal     88
+3    Rahul   21      Delhi     92
+🤔 loc[] aur iloc[] me difference
+loc[]	iloc[]
+Label (Name/Index) se kaam karta hai	Position (0,1,2...) se kaam karta hai
+
+Yaad rakhna:
+
+loc = Label
+iloc = Integer Location
+1️⃣ loc[] – Row Access
+print(df.loc[0])
+
+Output:
+
+Name         Satyam
+Age              18
+City     Khajuraho
+Marks            90
+
+Yahan 0 row label hai.
+
+2️⃣ iloc[] – Row Access
+print(df.iloc[0])
+
+Output bhi same hoga.
+
+Name         Satyam
+Age              18
+City     Khajuraho
+Marks            90
+
+Abhi dono same lag rahe hain.
+
+Difference baad me samajh aayega jab custom index use karenge.
+
+3️⃣ Kisi ek Cell ki Value
+loc
+print(df.loc[2, "Name"])
+
+Output
+
+Lakshya
+
+Matlab:
+
+Row 2
+Name column
+iloc
+print(df.iloc[2, 0])
+
+Output
+
+Lakshya
+
+Yahan
+
+Row Position = 2
+Column Position = 0
+4️⃣ Sirf Row 1 aur Row 2
+print(df.loc[1:2])
+
+Output:
+
+      Name  Age     City  Marks
+1   Shivam   20  Indore     85
+2  Lakshya   19  Bhopal     88
+5️⃣ iloc Slicing
+print(df.iloc[1:3])
+
+Output
+
+      Name  Age     City  Marks
+1   Shivam   20  Indore     85
+2  Lakshya   19  Bhopal     88
+
+⚠ Difference:
+
+loc[1:2] → 2 bhi include hota hai.
+iloc[1:3] → Python slicing ki tarah 3 include nahi hota.
+6️⃣ Sirf Name aur Marks
+loc
+print(df.loc[:, ["Name", "Marks"]])
+
+Yahan:
+
+: = saari rows
+["Name", "Marks"] = ye columns
+iloc
+print(df.iloc[:, [0, 3]])
+
+Yahan:
+
+0 = Name column
+3 = Marks column
+7️⃣ First 2 Rows, First 2 Columns
+print(df.iloc[0:2, 0:2])
+
+Output
+
+      Name  Age
+0   Satyam   18
+1   Shivam   20
+🎯 Easy Formula
+loc
+df.loc[row_label, column_name]
+iloc
+df.iloc[row_position, column_position]
+📝 Practice Questions
+Q1
+
+Print first row using loc.
+
+Q2
+
+Print third row using iloc.
+
+Q3
+
+Print only Marks column using loc.
+
+Q4
+
+Print only Name and City using iloc.
+
+Q5
+
+Print first three rows using iloc.
+
+Q6
+
+Print Rahul's Marks using both loc and iloc.
+
+🎯 Homework
+
+Is DataFrame ko use karo:
+
+student = {
+    "Name": ["Aman", "Rohit", "Neha", "Priya", "Arjun"],
+    "Age": [20, 19, 21, 18, 22],
+    "City": ["Delhi", "Bhopal", "Indore", "Sagar", "Gwalior"],
+    "Marks": [81, 75, 93, 88, 95]
+}
+
+Aur ye print karo:
+
+print(df.loc[0])
+print(df.iloc[2])
+print(df.loc[3, "Marks"])
+print(df.iloc[3, 3])
+print(df.loc[:, ["Name", "City"]])
+print(df.iloc[:, [0, 2]])
+print(df.iloc[1:4])
+🤖 AI Challenge
+
+AI ko ye prompt do:
+
+"Create a Pandas DataFrame with 10 employees and write 10 examples using loc[] and iloc[] with explanations."
+
+Us code ko sirf run mat karna. Har line samajhne ki koshish karna.
+
+📚 Aaj ka Revision
+
+✅ loc[]
+
+✅ iloc[]
+
+✅ Row Selection
+
+✅ Column Selection
+
+✅ Cell Selection
+
+✅ Slicing
