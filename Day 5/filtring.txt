@@ -1,0 +1,241 @@
+🎉 Pandas Course – Day 5/30
+📍 Topic: Filtering Data (Sabse Important Topics me se Ek)
+
+Aaj se tum actual data analysis karna shuru karoge.
+
+Filtering ka matlab hai:
+
+Data me se sirf wahi rows nikalna jo kisi condition ko satisfy kare.
+
+Real companies isi concept ka use karti hain.
+
+Examples:
+
+Sirf 90+ marks wale students
+Sirf Indore ke students
+Age 18 se zyada
+HR department ke employees
+Step 1 – DataFrame
+import pandas as pd
+
+student = {
+    "Name": ["Satyam", "Shivam", "Lakshya", "Rahul", "Priya"],
+    "Age": [18, 20, 19, 21, 18],
+    "City": ["Khajuraho", "Indore", "Bhopal", "Delhi", "Indore"],
+    "Marks": [90, 85, 88, 92, 95]
+}
+
+df = pd.DataFrame(student)
+
+print(df)
+
+Output:
+
+      Name  Age        City  Marks
+0   Satyam   18  Khajuraho     90
+1   Shivam   20     Indore     85
+2  Lakshya   19     Bhopal     88
+3    Rahul   21      Delhi     92
+4    Priya   18     Indore     95
+1️⃣ Marks > 90
+print(df[df["Marks"] > 90])
+
+Output
+
+    Name  Age    City  Marks
+Rahul   21   Delhi    92
+Priya   18  Indore    95
+2️⃣ Marks >= 90
+print(df[df["Marks"] >= 90])
+
+Output
+
+Satyam
+Rahul
+Priya
+
+Difference samjho
+
+>
+
+90 include nahi karega
+
+>=
+
+90 bhi include karega
+
+3️⃣ Age == 18
+print(df[df["Age"] == 18])
+
+Output
+
+Satyam
+Priya
+
+Dhyan do
+
+Comparison ke liye
+
+==
+
+Use hota hai.
+
+Assignment ke liye
+
+=
+
+Use hota hai.
+
+4️⃣ City == Indore
+print(df[df["City"] == "Indore"])
+
+Output
+
+Shivam
+Priya
+
+Text compare karte waqt quotes lagana zaroori hai.
+
+5️⃣ Marks != 90
+print(df[df["Marks"] != 90])
+
+Matlab
+
+90 ko hata do.
+
+6️⃣ AND Condition
+print(df[(df["Age"] > 18) & (df["Marks"] > 85)])
+
+Output
+
+Lakshya
+Rahul
+
+Yaad rakho
+
+AND
+
+&
+7️⃣ OR Condition
+print(df[(df["City"] == "Delhi") | (df["City"] == "Indore")])
+
+Output
+
+Shivam
+Rahul
+Priya
+
+OR
+
+|
+8️⃣ Sirf Name Print
+print(df[df["Marks"] > 90]["Name"])
+
+Output
+
+Rahul
+Priya
+
+Pehle filter
+
+Phir column.
+
+9️⃣ Multiple Columns
+print(df[df["Marks"] > 90][["Name", "Marks"]])
+
+Output
+
+Rahul    92
+Priya    95
+10️⃣ Age 18 ya 19
+print(df[df["Age"].isin([18,19])])
+
+Output
+
+Satyam
+Lakshya
+Priya
+
+.isin() bahut useful function hai.
+
+📝 Practice Questions
+Q1
+
+Marks 85 se zyada.
+
+Q2
+
+Age 20.
+
+Q3
+
+City = Delhi.
+
+Q4
+
+Marks 90 ya usse zyada.
+
+Q5
+
+Age >18 AND Marks >85.
+
+Q6
+
+City Indore OR Delhi.
+
+Q7
+
+Sirf Name print karo jinke Marks 90+ hain.
+
+Q8
+
+Sirf Name aur City print karo jinke Age 18 hai.
+
+🎯 Homework
+
+Ye DataFrame use karo:
+
+employee = {
+    "Name": ["Aman", "Rohit", "Neha", "Priya", "Arjun", "Karan"],
+    "Department": ["HR", "IT", "HR", "Finance", "IT", "Finance"],
+    "Salary": [30000, 55000, 35000, 60000, 52000, 45000],
+    "Experience": [2, 5, 3, 6, 4, 2]
+}
+
+df = pd.DataFrame(employee)
+
+Ab ye sab print karo:
+
+print(df[df["Salary"] > 50000])
+
+print(df[df["Department"] == "IT"])
+
+print(df[df["Experience"] >= 3])
+
+print(df[(df["Department"] == "Finance") & (df["Salary"] > 50000)])
+
+print(df[(df["Department"] == "HR") | (df["Department"] == "IT")])
+
+print(df[df["Salary"] > 40000]["Name"])
+
+print(df[df["Experience"] >= 3][["Name","Salary"]])
+🤖 AI Challenge
+
+AI ko prompt do:
+
+"Create a DataFrame of 20 employees and write 15 filtering examples using Pandas with explanation."
+
+Har example ko khud samajhna aur run karna.
+
+📚 Aaj ka Revision
+
+✅ >
+✅ <
+✅ >=
+✅ <=
+✅ ==
+✅ !=
+✅ & (AND)
+✅ | (OR)
+✅ .isin()
+✅ Filter + Column Selection
