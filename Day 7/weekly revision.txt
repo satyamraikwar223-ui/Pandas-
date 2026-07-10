@@ -1,0 +1,104 @@
+🎉 Pandas Course – Day 7/30
+🏆 Weekly Revision + Mini Project
+
+Congratulations! 🎊
+Tumne pehla week complete kar liya.
+
+Ab hum dekhte hain ki Day 1–6 me jo seekha, usse ek real-world project me kaise use karte hain.
+
+📌 Mini Project: Student Result Analysis
+
+Ek file banao: students.csv
+
+Name,Age,City,Marks
+Satyam,18,Khajuraho,91
+Shivam,20,Indore,85
+Lakshya,18,Bhopal,88
+Rahul,19,Delhi,79
+Aman,21,Gwalior,92
+Rohit,20,Jabalpur,81
+Priya,19,Sagar,95
+Neha,18,Ujjain,87
+Karan,21,Rewa,84
+Anjali,20,Satna,90
+🎯 Task 1 – CSV Read
+import pandas as pd
+
+df = pd.read_csv("students.csv")
+
+print(df)
+🎯 Task 2 – Basic Information
+print(df.shape)
+print(df.columns)
+print(df.dtypes)
+print(df.info())
+🎯 Task 3 – Top 5 Students
+print(df.head())
+🎯 Task 4 – Highest Marks
+print(df.sort_values("Marks", ascending=False).head(1))
+🎯 Task 5 – Lowest Marks
+print(df.sort_values("Marks").head(1))
+🎯 Task 6 – 90+ Marks
+print(df[df["Marks"] >= 90])
+🎯 Task 7 – Indore Students
+print(df[df["City"] == "Indore"])
+🎯 Task 8 – Age > 18
+print(df[df["Age"] > 18])
+🎯 Task 9 – Name aur Marks
+print(df[["Name", "Marks"]])
+🎯 Task 10 – loc aur iloc
+print(df.loc[0])
+
+print(df.iloc[0])
+
+print(df.loc[2, "Name"])
+
+print(df.iloc[2, 3])
+⭐ Final Challenge (Khud Karna)
+
+Bina meri help ke ye likho:
+
+Q1
+
+Sirf Bhopal wale students.
+
+Q2
+
+Marks 85 se kam.
+
+Q3
+
+Top 3 students.
+
+Q4
+
+Age ke hisaab se sort karo.
+
+Q5
+
+Sirf
+
+Name
+City
+
+print karo.
+
+🤖 AI Challenge
+
+AI ko ye prompt do:
+
+"Create a student dataset with 30 students and write 20 Pandas practice questions based on filtering, sorting, loc and iloc without giving answers."
+
+Pehle khud solve karna, phir AI se answers verify karna.
+
+📚 Week 1 Revision
+✅ Tumne ye sab seekh liya:
+Series
+DataFrame
+CSV Reading
+loc[]
+iloc[]
+Filtering
+Sorting
+
+Ye Pandas ki strong foundation hai.
