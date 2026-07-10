@@ -1,0 +1,198 @@
+🎉 Pandas Course – Day 6/30
+📍 Topic: Sorting Data (sort_values() & sort_index())
+
+Aaj hum seekhenge Sorting. Real-world me data ko ascending (A→Z, small→large) ya descending (Z→A, large→small) order me arrange karna bahut common task hai.
+
+Examples:
+
+Highest marks wale students
+Lowest salary wale employees
+Alphabetically sorted names
+Step 1 – DataFrame
+import pandas as pd
+
+student = {
+    "Name": ["Satyam", "Shivam", "Lakshya", "Rahul", "Priya"],
+    "Age": [18, 20, 19, 21, 18],
+    "City": ["Khajuraho", "Indore", "Bhopal", "Delhi", "Indore"],
+    "Marks": [90, 85, 88, 92, 95]
+}
+
+df = pd.DataFrame(student)
+
+print(df)
+1️⃣ Marks ke hisaab se Sort (Ascending)
+print(df.sort_values("Marks"))
+
+Output:
+
+Shivam   85
+Lakshya  88
+Satyam   90
+Rahul    92
+Priya    95
+
+Default sorting ascending hoti hai.
+
+2️⃣ Marks ke hisaab se Descending
+print(df.sort_values("Marks", ascending=False))
+
+Output:
+
+Priya    95
+Rahul    92
+Satyam   90
+Lakshya  88
+Shivam   85
+3️⃣ Name Alphabetically Sort
+print(df.sort_values("Name"))
+
+Output:
+
+Lakshya
+Priya
+Rahul
+Satyam
+Shivam
+4️⃣ Age ke hisaab se Sort
+print(df.sort_values("Age"))
+5️⃣ Multiple Columns se Sort
+
+Pehle City, phir Marks.
+
+print(df.sort_values(["City", "Marks"]))
+
+Agar ek hi city ke multiple students honge, to unhe Marks ke hisaab se sort karega.
+
+6️⃣ Mixed Sorting
+
+City → A to Z
+
+Marks → High to Low
+
+print(df.sort_values(["City", "Marks"], ascending=[True, False]))
+7️⃣ Original DataFrame ko Permanently Sort Karna
+df.sort_values("Marks", inplace=True)
+
+print(df)
+
+⚠ inplace=True ka matlab original DataFrame change ho jayega.
+
+8️⃣ Index ke hisaab se Sort
+print(df.sort_index())
+
+Descending:
+
+print(df.sort_index(ascending=False))
+9️⃣ Top 3 Students
+print(df.sort_values("Marks", ascending=False).head(3))
+
+Output:
+
+Priya
+Rahul
+Satyam
+🔟 Lowest 2 Marks
+print(df.sort_values("Marks").head(2))
+📝 Practice Questions
+Q1
+
+Marks ascending order me sort karo.
+
+Q2
+
+Marks descending order me sort karo.
+
+Q3
+
+Name alphabetically sort karo.
+
+Q4
+
+Age descending sort karo.
+
+Q5
+
+City aur Marks dono ke hisaab se sort karo.
+
+Q6
+
+Top 2 students (Marks ke basis par).
+
+Q7
+
+Lowest 3 students (Marks ke basis par).
+
+🎯 Homework
+
+Ye DataFrame use karo:
+
+import pandas as pd
+
+employee = {
+    "Name": ["Aman", "Rohit", "Neha", "Priya", "Arjun", "Karan"],
+    "Department": ["HR", "IT", "HR", "Finance", "IT", "Finance"],
+    "Salary": [30000, 55000, 35000, 60000, 52000, 45000],
+    "Experience": [2, 5, 3, 6, 4, 2]
+}
+
+df = pd.DataFrame(employee)
+
+Ab ye likho:
+
+print(df.sort_values("Salary"))
+
+print(df.sort_values("Salary", ascending=False))
+
+print(df.sort_values("Name"))
+
+print(df.sort_values("Experience", ascending=False))
+
+print(df.sort_values(["Department", "Salary"]))
+
+print(df.sort_values("Salary", ascending=False).head(3))
+
+print(df.sort_values("Salary").head(2))
+🤖 AI Challenge
+
+AI ko ye prompt do:
+
+"Create a DataFrame of 15 products with Product Name, Category, Price and Rating. Write 10 examples of sorting using sort_values() and explain each one."
+
+Har example khud run karna aur dekhna output kaise change hota hai.
+
+📚 Aaj ka Revision
+
+✅ sort_values()
+
+✅ ascending=True
+
+✅ ascending=False
+
+✅ Multiple Column Sorting
+
+✅ sort_index()
+
+✅ head() ke saath Top Records
+
+📈 Course Progress
+✅ Day 1 – Series
+✅ Day 2 – DataFrame
+✅ Day 3 – CSV
+✅ Day 4 – loc & iloc
+✅ Day 5 – Filtering
+✅ Day 6 – Sorting
+⬜ Day 7 – Revision + Mini Project
+🌟 Extra Practice (Today's Bonus)
+
+Pichhle Day 5 ka employee DataFrame lo aur ye ek line khud likhne ki koshish karo:
+
+IT department ke employees me se sabse zyada salary wale 2 employees print karo.
+
+Hint:
+
+Pehle filter.
+Phir sort.
+Phir head(2).
+
+Ye challenge tumhari filtering aur sorting dono ki practice kara dega.
