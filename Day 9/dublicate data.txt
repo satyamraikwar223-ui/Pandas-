@@ -1,0 +1,194 @@
+🎉 Pandas Course – Day 9/30
+📍 Topic: Duplicate Data (duplicated() & drop_duplicates())
+
+Welcome to Day 9! 🚀
+
+Aaj hum seekhenge Duplicate Data ko identify aur remove karna.
+
+Real-world datasets me duplicate records bahut common hote hain. Agar unhe remove na kiya jaye, to analysis galat ho sakta hai.
+
+📌 Duplicate Data Kya Hota Hai?
+
+Example:
+
+Name	Age	City
+Satyam	18	Khajuraho
+Shivam	20	Indore
+Satyam	18	Khajuraho
+Rahul	21	Delhi
+
+Yahan Satyam wali row do baar hai.
+
+Step 1 – DataFrame
+import pandas as pd
+
+student = {
+    "Name": ["Satyam", "Shivam", "Satyam", "Rahul", "Priya", "Rahul"],
+    "Age": [18, 20, 18, 21, 19, 21],
+    "City": ["Khajuraho", "Indore", "Khajuraho", "Delhi", "Sagar", "Delhi"]
+}
+
+df = pd.DataFrame(student)
+
+print(df)
+
+Output:
+
+      Name  Age        City
+0   Satyam   18  Khajuraho
+1   Shivam   20     Indore
+2   Satyam   18  Khajuraho
+3    Rahul   21      Delhi
+4    Priya   19      Sagar
+5    Rahul   21      Delhi
+1️⃣ duplicated()
+
+Ye batata hai kaunsi rows duplicate hain.
+
+print(df.duplicated())
+
+Output:
+
+0    False
+1    False
+2     True
+3    False
+4    False
+5     True
+
+True = Duplicate row
+
+2️⃣ Sirf Duplicate Rows Print
+print(df[df.duplicated()])
+
+Output:
+
+      Name  Age        City
+2   Satyam   18  Khajuraho
+5    Rahul   21      Delhi
+3️⃣ drop_duplicates()
+
+Duplicate rows hata do.
+
+print(df.drop_duplicates())
+
+Output:
+
+      Name  Age        City
+0   Satyam   18  Khajuraho
+1   Shivam   20     Indore
+3    Rahul   21      Delhi
+4    Priya   19      Sagar
+4️⃣ Original DataFrame se Duplicates Hatao
+df = df.drop_duplicates()
+
+print(df)
+5️⃣ Sirf Name ke Basis par Duplicate Check
+print(df.duplicated(subset=["Name"]))
+
+Output:
+
+0    False
+1    False
+2     True
+3    False
+4    False
+5     True
+
+Yahan sirf Name compare hoga.
+
+6️⃣ Multiple Columns ke Basis par
+print(df.duplicated(subset=["Name", "Age"]))
+7️⃣ Last Duplicate Rakho
+
+Default me first record rehta hai.
+
+Agar last record rakhna ho:
+
+print(df.drop_duplicates(keep="last"))
+8️⃣ Sabhi Duplicate Records Hata Do
+
+Agar kisi bhi duplicate group ka koi record nahi chahiye:
+
+print(df.drop_duplicates(keep=False))
+
+Output:
+
+      Name  Age   City
+1   Shivam   20  Indore
+4    Priya   19   Sagar
+📝 Practice Questions
+Q1
+
+Check duplicate rows.
+
+Q2
+
+Sirf duplicate rows print karo.
+
+Q3
+
+Duplicates remove karo.
+
+Q4
+
+Sirf Name ke basis par duplicates check karo.
+
+Q5
+
+keep="last" use karo.
+
+Q6
+
+keep=False use karo.
+
+🎯 Homework
+
+Ye DataFrame use karo:
+
+import pandas as pd
+
+employee = {
+    "Name": ["Aman", "Rohit", "Aman", "Neha", "Priya", "Neha"],
+    "Department": ["HR", "IT", "HR", "Finance", "IT", "Finance"],
+    "Salary": [30000, 55000, 30000, 60000, 52000, 60000]
+}
+
+df = pd.DataFrame(employee)
+
+Ab ye likho:
+
+print(df)
+
+print(df.duplicated())
+
+print(df[df.duplicated()])
+
+print(df.drop_duplicates())
+
+print(df.duplicated(subset=["Name"]))
+
+print(df.drop_duplicates(keep="last"))
+
+print(df.drop_duplicates(keep=False))
+🤖 AI Challenge
+
+AI ko ye prompt do:
+
+"Create a dataset with duplicate records and write 15 Pandas examples using duplicated() and drop_duplicates() with explanation."
+
+Har example ko khud run karna.
+
+📚 Aaj ka Revision
+
+✅ duplicated()
+
+✅ drop_duplicates()
+
+✅ subset
+
+✅ keep="first"
+
+✅ keep="last"
+
+✅ keep=False
