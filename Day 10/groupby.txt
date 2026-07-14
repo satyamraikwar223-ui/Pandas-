@@ -1,0 +1,190 @@
+🎉 Pandas Course – Day 10/30
+📍 Topic: groupby() (The Heart of Data Analysis)
+
+Welcome to Day 10! 🚀
+
+Aaj hum Pandas ka sabse important topic seekhenge:
+
+🔥 groupby()
+
+Agar mujhe Pandas ke sirf Top 5 topics batane hon, to groupby() unme zaroor hoga.
+
+Companies me isse questions solve hote hain jaise:
+
+Har department ki average salary kya hai?
+Har city me kitne students hain?
+Kis department ki total salary kitni hai?
+Kis city ke students ke average marks kitne hain?
+Step 1 – DataFrame
+import pandas as pd
+
+student = {
+    "Name": ["Satyam", "Shivam", "Lakshya", "Rahul", "Priya", "Aman"],
+    "City": ["Khajuraho", "Indore", "Indore", "Delhi", "Delhi", "Khajuraho"],
+    "Marks": [90, 85, 88, 92, 95, 80],
+    "Age": [18, 20, 19, 21, 18, 22]
+}
+
+df = pd.DataFrame(student)
+
+print(df)
+
+Output:
+
+Name	City	Marks	Age
+Satyam	Khajuraho	90	18
+Shivam	Indore	85	20
+Lakshya	Indore	88	19
+Rahul	Delhi	92	21
+Priya	Delhi	95	18
+Aman	Khajuraho	80	22
+1️⃣ City ke hisaab se Group
+print(df.groupby("City"))
+
+Ye sirf GroupBy object dikhayega.
+
+Useful output dekhne ke liye aggregation use karte hain.
+
+2️⃣ Har City ka Average Marks
+print(df.groupby("City")["Marks"].mean())
+
+Output:
+
+City
+Delhi        93.5
+Indore       86.5
+Khajuraho    85.0
+3️⃣ Har City ka Total Marks
+print(df.groupby("City")["Marks"].sum())
+
+Output:
+
+Delhi        187
+Indore       173
+Khajuraho    170
+4️⃣ Har City me Kitne Students
+print(df.groupby("City")["Name"].count())
+
+Output:
+
+Delhi        2
+Indore       2
+Khajuraho    2
+5️⃣ Har City ka Highest Marks
+print(df.groupby("City")["Marks"].max())
+
+Output:
+
+Delhi        95
+Indore       88
+Khajuraho    90
+6️⃣ Har City ka Lowest Marks
+print(df.groupby("City")["Marks"].min())
+7️⃣ Ek Saath Multiple Calculations
+print(df.groupby("City")["Marks"].agg(["min", "max", "mean", "sum", "count"]))
+
+Output:
+
+City	min	max	mean	sum	count
+Delhi	92	95	93.5	187	2
+Indore	85	88	86.5	173	2
+Khajuraho	80	90	85.0	170	2
+8️⃣ Multiple Columns se Group
+employee = {
+    "Department": ["IT", "IT", "HR", "HR", "Finance", "Finance"],
+    "City": ["Delhi", "Indore", "Delhi", "Indore", "Delhi", "Indore"],
+    "Salary": [50000, 55000, 40000, 42000, 60000, 65000]
+}
+
+df = pd.DataFrame(employee)
+
+print(df.groupby(["Department", "City"])["Salary"].mean())
+9️⃣ size()
+
+Har group me total rows:
+
+print(df.groupby("Department").size())
+🔟 value_counts()
+
+Ye groupby().size() ka shortcut hai.
+
+print(df["City"].value_counts())
+📝 Practice Questions
+Q1
+
+Har city ka average marks.
+
+Q2
+
+Har city ka highest marks.
+
+Q3
+
+Har city ka lowest marks.
+
+Q4
+
+Har city me kitne students hain.
+
+Q5
+
+Har city ka total marks.
+
+Q6
+
+Ek saath min, max, mean, count.
+
+🎯 Homework
+import pandas as pd
+
+employee = {
+    "Name": ["Aman", "Rohit", "Neha", "Priya", "Arjun", "Karan"],
+    "Department": ["HR", "IT", "HR", "Finance", "IT", "Finance"],
+    "Salary": [30000, 55000, 35000, 60000, 52000, 45000],
+    "Experience": [2, 5, 3, 6, 4, 2]
+}
+
+df = pd.DataFrame(employee)
+
+Ab ye sab likho:
+
+print(df.groupby("Department")["Salary"].mean())
+
+print(df.groupby("Department")["Salary"].sum())
+
+print(df.groupby("Department")["Salary"].max())
+
+print(df.groupby("Department")["Salary"].min())
+
+print(df.groupby("Department")["Salary"].count())
+
+print(df.groupby("Department")["Salary"].agg(["min", "max", "mean", "sum", "count"]))
+
+print(df.groupby("Department").size())
+🤖 AI Challenge
+
+AI ko prompt do:
+
+"Create a sales dataset with 30 records and write 15 groupby() examples using mean(), sum(), max(), min(), count(), and agg() with explanation."
+
+Har example ko khud run karna.
+
+📚 Aaj ka Revision
+
+✅ groupby()
+
+✅ mean()
+
+✅ sum()
+
+✅ max()
+
+✅ min()
+
+✅ count()
+
+✅ agg()
+
+✅ size()
+
+✅ value_counts()
