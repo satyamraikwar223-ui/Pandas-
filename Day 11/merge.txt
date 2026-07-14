@@ -1,0 +1,262 @@
+🎉 Pandas Course – Day 11/30
+📍 Topic: merge() & join() (SQL + Pandas ka Sabse Important Concept)
+
+Welcome to Day 11! 🚀
+
+Aaj hum Pandas ka ek industry-level topic seekhenge:
+
+🔥 merge()
+
+Ye wahi concept hai jo SQL JOIN me use hota hai.
+
+Agar tum Data Analyst, Data Scientist ya AI Engineer banna chahte ho, to merge() zaroor aana chahiye.
+
+🤔 Real-Life Example
+
+Maan lo tumhare paas 2 alag tables hain.
+
+Table 1 – Students
+import pandas as pd
+
+students = pd.DataFrame({
+    "ID": [101, 102, 103, 104],
+    "Name": ["Satyam", "Shivam", "Lakshya", "Rahul"]
+})
+
+print(students)
+
+Output:
+
+ID	Name
+101	Satyam
+102	Shivam
+103	Lakshya
+104	Rahul
+Table 2 – Marks
+marks = pd.DataFrame({
+    "ID": [101, 102, 104, 105],
+    "Marks": [90, 85, 92, 88]
+})
+
+print(marks)
+
+Output:
+
+ID	Marks
+101	90
+102	85
+104	92
+105	88
+1️⃣ Inner Merge (Default)
+
+Sirf common IDs.
+
+result = pd.merge(students, marks, on="ID")
+
+print(result)
+
+Output:
+
+ID	Name	Marks
+101	Satyam	90
+102	Shivam	85
+104	Rahul	92
+
+📌 ID 103 aur 105 nahi aaye, kyunki dono tables me common nahi the.
+
+2️⃣ Left Merge
+
+Student table ki sab rows rakho.
+
+result = pd.merge(students, marks, on="ID", how="left")
+
+print(result)
+
+Output:
+
+ID	Name	Marks
+101	Satyam	90
+102	Shivam	85
+103	Lakshya	NaN
+104	Rahul	92
+
+📌 Lakshya ke marks nahi mile, isliye NaN.
+
+3️⃣ Right Merge
+
+Marks table ki sab rows rakho.
+
+result = pd.merge(students, marks, on="ID", how="right")
+
+print(result)
+
+Output:
+
+ID	Name	Marks
+101	Satyam	90
+102	Shivam	85
+104	Rahul	92
+105	NaN	88
+4️⃣ Outer Merge
+
+Dono tables ki sab rows.
+
+result = pd.merge(students, marks, on="ID", how="outer")
+
+print(result)
+
+Output:
+
+ID	Name	Marks
+101	Satyam	90
+102	Shivam	85
+103	Lakshya	NaN
+104	Rahul	92
+105	NaN	88
+5️⃣ Multiple Columns par Merge
+pd.merge(df1, df2, on=["ID", "City"])
+6️⃣ Different Column Names
+
+Agar column names alag hon:
+
+students = pd.DataFrame({
+    "Student_ID": [1, 2],
+    "Name": ["A", "B"]
+})
+
+marks = pd.DataFrame({
+    "ID": [1, 2],
+    "Marks": [90, 85]
+})
+
+Merge:
+
+pd.merge(
+    students,
+    marks,
+    left_on="Student_ID",
+    right_on="ID"
+)
+7️⃣ join()
+
+Agar index ke basis par join karna ho:
+
+df1.join(df2)
+
+📌 Interview me merge() zyada use hota hai.
+
+8️⃣ Merge Indicator
+
+Ye batata hai row kis table se aayi.
+
+result = pd.merge(
+    students,
+    marks,
+    on="ID",
+    how="outer",
+    indicator=True
+)
+
+print(result)
+
+Output:
+
+ID	Name	Marks	_merge
+101	Satyam	90	both
+103	Lakshya	NaN	left_only
+105	NaN	88	right_only
+📝 Practice Questions
+Q1
+
+Inner merge.
+
+Q2
+
+Left merge.
+
+Q3
+
+Right merge.
+
+Q4
+
+Outer merge.
+
+Q5
+
+indicator=True use karo.
+
+🎯 Homework
+import pandas as pd
+
+employees = pd.DataFrame({
+    "Emp_ID": [1, 2, 3, 4],
+    "Name": ["Aman", "Rohit", "Neha", "Priya"]
+})
+
+salary = pd.DataFrame({
+    "Emp_ID": [1, 2, 4, 5],
+    "Salary": [30000, 55000, 60000, 45000]
+})
+
+Ab ye sab likho:
+
+print(pd.merge(employees, salary, on="Emp_ID"))
+
+print(pd.merge(employees, salary, on="Emp_ID", how="left"))
+
+print(pd.merge(employees, salary, on="Emp_ID", how="right"))
+
+print(pd.merge(employees, salary, on="Emp_ID", how="outer"))
+
+print(pd.merge(
+    employees,
+    salary,
+    on="Emp_ID",
+    how="outer",
+    indicator=True
+))
+🤖 AI Connection
+
+Maan lo AI project me 2 datasets hain.
+
+Dataset 1
+User_ID	Name
+1	Satyam
+2	Rahul
+Dataset 2
+User_ID	Purchase
+1	5000
+2	3000
+
+AI engineer dono ko merge karta hai:
+
+pd.merge(users, purchases, on="User_ID")
+
+Result:
+
+User_ID	Name	Purchase
+1	Satyam	5000
+2	Rahul	3000
+
+Ab AI predict kar sakta hai ki kis user ko kaunsa product recommend karna hai.
+
+📚 Aaj ka Revision
+
+✅ merge()
+
+✅ how="inner"
+
+✅ how="left"
+
+✅ how="right"
+
+✅ how="outer"
+
+✅ left_on
+
+✅ right_on
+
+✅ join()
+
+✅ indicator=True
