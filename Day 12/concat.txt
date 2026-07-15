@@ -1,0 +1,244 @@
+🎉 Pandas Course – Day 12/30
+📍 Topic: concat() (Combine Multiple DataFrames)
+
+Welcome to Day 12! 🚀
+
+Aaj hum seekhenge concat().
+
+Ye merge() se alag hai.
+
+merge() → Common column ke basis par join karta hai.
+concat() → DataFrames ko upar (rows) ya side-by-side (columns) jodta hai.
+🤔 Real-Life Example
+
+Maan lo tumhare paas January aur February ka sales data alag files me hai.
+
+January
+Name	Sales
+Aman	1000
+Rohit	2000
+February
+Name	Sales
+Neha	3000
+Priya	2500
+
+Ab dono ko ek DataFrame banana hai.
+
+Step 1 – DataFrames
+import pandas as pd
+
+jan = pd.DataFrame({
+    "Name": ["Aman", "Rohit"],
+    "Sales": [1000, 2000]
+})
+
+feb = pd.DataFrame({
+    "Name": ["Neha", "Priya"],
+    "Sales": [3000, 2500]
+})
+1️⃣ Rows Wise Concat
+result = pd.concat([jan, feb])
+
+print(result)
+
+Output:
+
+     Name  Sales
+0    Aman   1000
+1   Rohit   2000
+0    Neha   3000
+1   Priya   2500
+
+Notice index repeat ho gaya.
+
+2️⃣ ignore_index=True
+
+Index ko reset karne ke liye:
+
+result = pd.concat([jan, feb], ignore_index=True)
+
+print(result)
+
+Output:
+
+    Name  Sales
+0   Aman   1000
+1  Rohit   2000
+2   Neha   3000
+3  Priya   2500
+
+👉 Industry me ye bahut use hota hai.
+
+3️⃣ Column Wise Concat
+student = pd.DataFrame({
+    "Name": ["Aman", "Rohit"]
+})
+
+marks = pd.DataFrame({
+    "Marks": [90, 85]
+})
+
+result = pd.concat([student, marks], axis=1)
+
+print(result)
+
+Output:
+
+Name	Marks
+Aman	90
+Rohit	85
+
+📌 axis=1 ka matlab columns ke hisaab se jodna.
+
+4️⃣ Different Columns
+df1 = pd.DataFrame({
+    "Name": ["Aman", "Rohit"]
+})
+
+df2 = pd.DataFrame({
+    "City": ["Delhi", "Indore"]
+})
+
+print(pd.concat([df1, df2], axis=1))
+
+Output:
+
+Name	City
+Aman	Delhi
+Rohit	Indore
+5️⃣ Different Structure
+df1 = pd.DataFrame({
+    "Name": ["Aman"],
+    "Sales": [1000]
+})
+
+df2 = pd.DataFrame({
+    "Name": ["Neha"],
+    "City": ["Delhi"]
+})
+
+print(pd.concat([df1, df2], ignore_index=True))
+
+Output:
+
+Name	Sales	City
+Aman	1000	NaN
+Neha	NaN	Delhi
+
+Pandas missing columns me NaN fill kar deta hai.
+
+6️⃣ keys
+print(pd.concat([jan, feb], keys=["January", "February"]))
+
+Output:
+
+January
+0 Aman
+1 Rohit
+
+February
+0 Neha
+1 Priya
+
+Ye batata hai data kis DataFrame se aaya.
+
+7️⃣ verify_integrity
+pd.concat([jan, feb], verify_integrity=True)
+
+Agar duplicate index honge to error dega.
+
+Ye advanced option hai.
+
+📝 Practice Questions
+Q1
+
+2 DataFrames ko rows wise concat karo.
+
+Q2
+
+ignore_index=True use karo.
+
+Q3
+
+2 DataFrames ko columns wise concat karo.
+
+Q4
+
+Different columns wale DataFrames concat karo.
+
+Q5
+
+keys use karo.
+
+🎯 Homework
+import pandas as pd
+
+morning = pd.DataFrame({
+    "Student": ["Aman", "Rohit"],
+    "Marks": [80, 90]
+})
+
+evening = pd.DataFrame({
+    "Student": ["Neha", "Priya"],
+    "Marks": [85, 95]
+})
+
+Ab ye sab likho:
+
+print(pd.concat([morning, evening]))
+
+print(pd.concat([morning, evening], ignore_index=True))
+
+student = pd.DataFrame({
+    "Name": ["Aman", "Rohit"]
+})
+
+age = pd.DataFrame({
+    "Age": [20, 21]
+})
+
+print(pd.concat([student, age], axis=1))
+
+print(pd.concat([morning, evening], keys=["Morning", "Evening"]))
+🤖 AI Connection
+
+Maan lo tum AI engineer ho.
+
+Tumhare paas training data alag-alag files me hai.
+
+File 1
+Text	Label
+Good	Positive
+Bad	Negative
+File 2
+Text	Label
+Awesome	Positive
+Poor	Negative
+
+Training se pehle dono datasets ko combine karna padega.
+
+train = pd.concat([file1, file2], ignore_index=True)
+
+Result:
+
+Text	Label
+Good	Positive
+Bad	Negative
+Awesome	Positive
+Poor	Negative
+
+👉 Isi combined dataset se AI model train hoga.
+
+📚 Aaj ka Revision
+
+✅ pd.concat()
+
+✅ ignore_index=True
+
+✅ axis=0 (Rows)
+
+✅ axis=1 (Columns)
+
+✅ keys
+
+✅ Different Columns
