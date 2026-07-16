@@ -1,0 +1,239 @@
+🎉 Pandas Course – Day 13/30
+📍 Topic: String Functions (.str Accessor)
+
+Welcome to Day 13! 🚀
+
+Aaj hum Pandas ke String Functions seekhenge.
+
+Ye topic Data Cleaning, NLP (Natural Language Processing) aur AI me bahut important hai.
+
+🤔 Real-Life Example
+
+Maan lo company ke database me names aise stored hain:
+
+Name
+" satyam "
+"RAHUL"
+"priya"
+"NeHa"
+
+AI ya Data Analysis se pehle hume inhe clean karna padega.
+
+Step 1 – DataFrame
+import pandas as pd
+
+df = pd.DataFrame({
+    "Name": [" satyam ", "RAHUL", "priya", "NeHa"],
+    "City": ["Delhi", "indore", "BHOPAL", "gwalior"]
+})
+
+print(df)
+1️⃣ .str.upper()
+
+Sabko uppercase me convert karo.
+
+print(df["Name"].str.upper())
+
+Output:
+
+0     SATYAM
+1      RAHUL
+2      PRIYA
+3       NEHA
+2️⃣ .str.lower()
+
+Sabko lowercase me.
+
+print(df["Name"].str.lower())
+
+Output:
+
+0    satyam
+1     rahul
+2     priya
+3      neha
+3️⃣ .str.title()
+
+Har word ka first letter capital.
+
+print(df["Name"].str.title())
+
+Output:
+
+Satyam
+Rahul
+Priya
+Neha
+4️⃣ .str.strip()
+
+Extra spaces hata do.
+
+print(df["Name"].str.strip())
+
+Output:
+
+satyam
+RAHUL
+priya
+NeHa
+5️⃣ .str.replace()
+
+Text replace karo.
+
+print(df["City"].str.replace("Delhi", "Mumbai"))
+
+Output:
+
+Mumbai
+indore
+BHOPAL
+gwalior
+6️⃣ .str.contains()
+
+Check karo kisi string me word hai ya nahi.
+
+print(df["City"].str.contains("ind"))
+
+Output:
+
+0    False
+1     True
+2    False
+3    False
+
+Sirf matching rows:
+
+print(df[df["City"].str.contains("ind", case=False)])
+
+case=False → uppercase/lowercase ignore karega.
+
+7️⃣ .str.startswith()
+print(df["Name"].str.startswith("R"))
+
+Output:
+
+False
+True
+False
+False
+8️⃣ .str.endswith()
+print(df["Name"].str.endswith("a"))
+9️⃣ .str.len()
+
+String ki length.
+
+print(df["Name"].str.len())
+🔟 Multiple Operations
+df["Name"] = df["Name"].str.strip().str.title()
+
+print(df)
+
+Ye industry me bahut common pattern hai.
+
+📝 Practice Questions
+Q1
+
+Sab names uppercase karo.
+
+Q2
+
+Sab names lowercase karo.
+
+Q3
+
+Extra spaces remove karo.
+
+Q4
+
+City me "Delhi" ko "Noida" se replace karo.
+
+Q5
+
+Sirf "ind" wali city print karo.
+
+Q6
+
+Name ki length print karo.
+
+Q7
+
+Name ko strip() aur title() ek saath use karke clean karo.
+
+🎯 Homework
+import pandas as pd
+
+employee = pd.DataFrame({
+    "Name": [" aman ", "ROHIT", "neha", "PRIYA"],
+    "Department": ["hr", "IT", "finance", "HR"]
+})
+
+Ab ye sab likho:
+
+print(employee["Name"].str.upper())
+
+print(employee["Name"].str.lower())
+
+print(employee["Name"].str.title())
+
+print(employee["Name"].str.strip())
+
+print(employee["Department"].str.upper())
+
+print(employee["Department"].str.lower())
+
+print(employee["Department"].str.replace("HR", "Human Resource"))
+
+print(employee["Name"].str.len())
+
+print(employee["Name"].str.startswith("A"))
+
+print(employee["Name"].str.endswith("a"))
+
+employee["Name"] = employee["Name"].str.strip().str.title()
+
+print(employee)
+🤖 AI Connection
+
+Socho tum ek Chatbot bana rahe ho.
+
+Users ye messages bhejte hain:
+
+HELLO
+hello
+ Hello
+HELLO
+
+AI ke liye ye sab ek hi word hone chahiye.
+
+Isliye pehle text clean kiya jata hai:
+
+df["Text"] = df["Text"].str.strip().str.lower()
+
+Result:
+
+hello
+hello
+hello
+hello
+
+Ab AI ko clean aur consistent data milta hai.
+
+📚 Aaj ka Revision
+
+✅ .str.upper()
+
+✅ .str.lower()
+
+✅ .str.title()
+
+✅ .str.strip()
+
+✅ .str.replace()
+
+✅ .str.contains()
+
+✅ .str.startswith()
+
+✅ .str.endswith()
+
+✅ .str.len()
