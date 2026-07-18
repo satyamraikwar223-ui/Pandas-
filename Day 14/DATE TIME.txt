@@ -1,0 +1,248 @@
+🎉 Pandas Course – Day 14/30
+📍 Topic: Date & Time (pd.to_datetime() + .dt)
+
+Welcome to Day 14! 🚀
+
+Aaj hum Pandas ka ek bahut important topic seekhenge:
+
+🔥 Date & Time Handling
+
+Ye Banking, E-commerce, Finance, AI aur Data Analytics me roz use hota hai.
+
+🤔 Real-Life Example
+
+Maan lo tumhare paas orders ka data hai.
+
+Order_ID	Order_Date
+101	2026-01-15
+102	2026-02-10
+103	2026-03-25
+
+Ab tumhe ye nikalna hai:
+
+Kis year ka order hai?
+Kis month ka?
+Kis day ka?
+Kis weekday ko order hua?
+
+Isi ke liye to_datetime() use hota hai.
+
+Step 1 – DataFrame
+import pandas as pd
+
+df = pd.DataFrame({
+    "Order_ID": [101,102,103,104],
+    "Order_Date": [
+        "2026-01-15",
+        "2026-02-10",
+        "2026-03-25",
+        "2026-04-30"
+    ]
+})
+
+print(df)
+1️⃣ String ko Date me Convert
+df["Order_Date"] = pd.to_datetime(df["Order_Date"])
+
+print(df)
+
+📌 Ye step bahut important hai.
+
+Agar ye nahi karoge to .dt kaam nahi karega.
+
+2️⃣ Year
+print(df["Order_Date"].dt.year)
+
+Output
+
+2026
+2026
+2026
+2026
+3️⃣ Month
+print(df["Order_Date"].dt.month)
+
+Output
+
+1
+2
+3
+4
+4️⃣ Day
+print(df["Order_Date"].dt.day)
+
+Output
+
+15
+10
+25
+30
+5️⃣ Day Name
+print(df["Order_Date"].dt.day_name())
+
+Output
+
+Thursday
+Tuesday
+Wednesday
+Thursday
+6️⃣ Month Name
+print(df["Order_Date"].dt.month_name())
+
+Output
+
+January
+February
+March
+April
+7️⃣ Weekday Number
+print(df["Order_Date"].dt.weekday)
+
+Output
+
+0 = Monday
+1 = Tuesday
+...
+6 = Sunday
+8️⃣ New Columns Banana
+df["Year"] = df["Order_Date"].dt.year
+df["Month"] = df["Order_Date"].dt.month_name()
+df["Day"] = df["Order_Date"].dt.day
+df["Weekday"] = df["Order_Date"].dt.day_name()
+
+print(df)
+
+Output
+
+Order_ID	Order_Date	Year	Month	Day	Weekday
+101	2026-01-15	2026	January	15	Thursday
+9️⃣ Date Filter
+
+Sirf March ke baad ke orders
+
+print(df[df["Order_Date"] > "2026-03-01"])
+🔟 Date Difference
+today = pd.Timestamp("2026-07-17")
+
+df["Days_Passed"] = today - df["Order_Date"]
+
+print(df)
+
+Output
+
+183 days
+157 days
+...
+📝 Practice Questions
+Q1
+
+Date ko datetime me convert karo.
+
+Q2
+
+Year print karo.
+
+Q3
+
+Month print karo.
+
+Q4
+
+Day print karo.
+
+Q5
+
+Month Name print karo.
+
+Q6
+
+Weekday Name print karo.
+
+Q7
+
+New columns banao.
+
+🎯 Homework
+import pandas as pd
+
+employee = pd.DataFrame({
+    "Name": ["Aman","Rohit","Neha","Priya"],
+    "Joining_Date": [
+        "2022-01-15",
+        "2021-08-20",
+        "2023-03-12",
+        "2020-11-05"
+    ]
+})
+
+Ab ye sab likho:
+
+employee["Joining_Date"] = pd.to_datetime(employee["Joining_Date"])
+
+print(employee["Joining_Date"].dt.year)
+
+print(employee["Joining_Date"].dt.month)
+
+print(employee["Joining_Date"].dt.day)
+
+print(employee["Joining_Date"].dt.day_name())
+
+print(employee["Joining_Date"].dt.month_name())
+
+employee["Year"] = employee["Joining_Date"].dt.year
+
+employee["Month"] = employee["Joining_Date"].dt.month_name()
+
+employee["Day"] = employee["Joining_Date"].dt.day
+
+employee["Weekday"] = employee["Joining_Date"].dt.day_name()
+
+print(employee)
+🤖 AI Connection
+
+Socho tum ek food delivery AI bana rahe ho.
+
+Dataset:
+
+Order	Date
+1	2026-07-01
+2	2026-07-02
+3	2026-07-05
+
+AI engineer ye nikalta hai:
+
+df["Day"] = df["Date"].dt.day_name()
+
+Phir check karta hai:
+
+print(df.groupby("Day").size())
+
+Output:
+
+Friday      1200
+Saturday    2100
+Sunday      3500
+
+👉 AI ko pata chal gaya ki Sunday ko orders sabse zyada aate hain.
+
+Ab company:
+
+Sunday ko zyada delivery partners rakhegi.
+Demand prediction model aur accurate banayegi.
+📚 Aaj ka Revision
+
+✅ pd.to_datetime()
+
+✅ .dt.year
+
+✅ .dt.month
+
+✅ .dt.day
+
+✅ .dt.day_name()
+
+✅ .dt.month_name()
+
+✅ .dt.weekday
+
+✅ Date Filtering
