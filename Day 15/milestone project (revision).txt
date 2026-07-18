@@ -1,0 +1,229 @@
+🎉 Pandas Course – Day 15/30 (Milestone Day)
+📍 Topic: Real Data Analysis Mini Project
+
+Congratulations! 🥳
+
+Tum 15 Days complete kar chuke ho.
+
+Aaj se hum real-world style projects shuru karenge.
+
+🎯 Project: Student Performance Analysis
+
+Imagine tum ek Data Analyst ho.
+
+School ne tumhe ye data diya hai aur principal ne report maangi hai.
+
+Step 1 – Dataset
+import pandas as pd
+
+student = {
+    "Name": [
+        "Aman","Rohit","Neha","Priya","Arjun",
+        "Sneha","Karan","Pooja","Vivek","Anjali"
+    ],
+    "City": [
+        "Delhi","Indore","Delhi","Bhopal","Indore",
+        "Delhi","Bhopal","Indore","Delhi","Bhopal"
+    ],
+    "Marks":[
+        85,90,78,95,88,
+        None,91,84,76,89
+    ],
+    "Age":[
+        18,19,18,20,19,
+        18,20,19,18,20
+    ],
+    "Joining_Date":[
+        "2026-01-10",
+        "2026-02-15",
+        "2026-03-20",
+        "2026-01-25",
+        "2026-04-10",
+        "2026-05-12",
+        "2026-02-28",
+        "2026-03-18",
+        "2026-01-05",
+        "2026-06-01"
+    ]
+}
+
+df = pd.DataFrame(student)
+🎯 Task 1
+
+Display first 5 rows.
+
+print(df.head())
+🎯 Task 2
+
+Check DataFrame information.
+
+print(df.info())
+🎯 Task 3
+
+Missing values.
+
+print(df.isnull().sum())
+🎯 Task 4
+
+Fill missing Marks with average.
+
+df["Marks"] = df["Marks"].fillna(df["Marks"].mean())
+🎯 Task 5
+
+Highest Marks.
+
+print(df["Marks"].max())
+🎯 Task 6
+
+Lowest Marks.
+
+print(df["Marks"].min())
+🎯 Task 7
+
+Average Marks.
+
+print(df["Marks"].mean())
+🎯 Task 8
+
+Students scoring above 85.
+
+print(df[df["Marks"] > 85])
+🎯 Task 9
+
+Sort by Marks.
+
+print(df.sort_values("Marks", ascending=False))
+🎯 Task 10
+
+Average marks city-wise.
+
+print(df.groupby("City")["Marks"].mean())
+🎯 Task 11
+
+Convert Joining_Date.
+
+df["Joining_Date"] = pd.to_datetime(df["Joining_Date"])
+🎯 Task 12
+
+Create Year column.
+
+df["Year"] = df["Joining_Date"].dt.year
+🎯 Task 13
+
+Create Month column.
+
+df["Month"] = df["Joining_Date"].dt.month_name()
+🎯 Task 14
+
+Students joined after March.
+
+print(df[df["Joining_Date"] > "2026-03-01"])
+🎯 Task 15
+
+Final Clean Data.
+
+print(df)
+⭐ Bonus Challenge (Industry Level)
+
+Create a new column:
+
+df["Result"] = df["Marks"].apply(
+    lambda x: "Pass" if x >= 40 else "Fail"
+)
+
+Output:
+
+Name	Marks	Result
+Aman	85	Pass
+⭐ Bonus 2
+
+Grade System
+
+def grade(x):
+    if x >= 90:
+        return "A+"
+    elif x >= 80:
+        return "A"
+    elif x >= 70:
+        return "B"
+    else:
+        return "C"
+
+df["Grade"] = df["Marks"].apply(grade)
+🤖 AI Connection
+
+Suppose tum ek Machine Learning Engineer ho.
+
+Model train karne se pehle tum yahi steps karoge:
+
+✅ Missing Values
+
+✅ Data Cleaning
+
+✅ Filtering
+
+✅ Sorting
+
+✅ GroupBy
+
+✅ Date Handling
+
+✅ Feature Creation
+
+Ye sab milkar Data Preprocessing kehlata hai.
+
+Aur Machine Learning me:
+
+80% time Data Cleaning me aur sirf 20% time Model banane me lagta hai.
+
+Isliye jo tum ab seekh rahe ho, wahi AI ki sabse important foundation hai.
+
+📚 Is Project me Humne Kya Use Kiya?
+
+✅ DataFrame
+
+✅ CSV Concept
+
+✅ Filtering
+
+✅ Sorting
+
+✅ Missing Values
+
+✅ fillna()
+
+✅ groupby()
+
+✅ DateTime
+
+✅ dt.year
+
+✅ dt.month_name()
+
+✅ apply()
+
+🎯 Homework
+Ek file banao: student_project.py
+Upar ke 15 Tasks complete karo.
+Bonus 1 aur Bonus 2 bhi karo.
+Output comments me likho (jaise tum hamesha karte ho).
+🌟 Today's Extra Practice (10 Minutes)
+
+Dataset me ek naya column add karo:
+
+"Attendance": [90,85,70,95,88,75,80,92,68,89]
+
+Ab:
+
+Attendance > 80 wale students print karo.
+City-wise average attendance nikalo.
+Marks aur Attendance dono ka average ek saath:
+print(
+    df.groupby("City")[["Marks", "Attendance"]].mean()
+)
+🏆 Milestone Achieved
+✅ Day 1–14 Completed
+🏆 Day 15 – First Real Project
+
+Ye project complete karne ke baad tum sirf Pandas commands nahi jaante hoge, balki ek real dataset analyze karna bhi seekh jaoge.
+
