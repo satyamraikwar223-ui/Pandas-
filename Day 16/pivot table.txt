@@ -1,0 +1,276 @@
+🎉 Pandas Course – Day 16/30
+📍 Topic: Pivot Table (pivot_table())
+
+Welcome to Day 16! 🚀
+
+Aaj hum Pandas ka ek bahut powerful feature seekhenge.
+
+🔥 pivot_table()
+
+Ye Excel ki Pivot Table ka Pandas version hai.
+
+Data Analysts iska use reports banane ke liye roz karte hain.
+
+🤔 Real-Life Example
+
+Maan lo company ne sales data diya hai.
+
+City	Product	Sales
+Delhi	Laptop	50000
+Delhi	Mouse	5000
+Indore	Laptop	45000
+Indore	Mouse	6000
+Bhopal	Laptop	48000
+
+Ab manager poochta hai:
+
+Har city me har product ki average sales kitni hai?
+
+Iske liye Pivot Table best hai.
+
+Step 1 – Dataset
+import pandas as pd
+
+df = pd.DataFrame({
+    "City": [
+        "Delhi","Delhi","Indore",
+        "Indore","Bhopal","Bhopal"
+    ],
+    "Product": [
+        "Laptop","Mouse","Laptop",
+        "Mouse","Laptop","Mouse"
+    ],
+    "Sales":[
+        50000,5000,45000,
+        6000,48000,5500
+    ]
+})
+
+print(df)
+1️⃣ Simple Pivot Table
+print(pd.pivot_table(
+    df,
+    values="Sales",
+    index="City"
+))
+
+Output
+
+City	Sales
+Bhopal	26750
+Delhi	27500
+Indore	25500
+
+👉 Default function = mean()
+
+2️⃣ Product-wise Pivot
+print(pd.pivot_table(
+    df,
+    values="Sales",
+    index="City",
+    columns="Product"
+))
+
+Output
+
+City	Laptop	Mouse
+Delhi	50000	5000
+Indore	45000	6000
+Bhopal	48000	5500
+3️⃣ Sum Instead of Mean
+print(pd.pivot_table(
+    df,
+    values="Sales",
+    index="City",
+    aggfunc="sum"
+))
+
+Output
+
+City	Sales
+Delhi	55000
+Indore	51000
+Bhopal	53500
+4️⃣ Count
+print(pd.pivot_table(
+    df,
+    values="Sales",
+    index="City",
+    aggfunc="count"
+))
+5️⃣ Multiple Functions
+print(pd.pivot_table(
+    df,
+    values="Sales",
+    index="City",
+    aggfunc=["mean", "max", "min"]
+))
+6️⃣ Fill Missing Values
+print(pd.pivot_table(
+    df,
+    values="Sales",
+    index="City",
+    columns="Product",
+    fill_value=0
+))
+
+Agar kisi city me koi product na ho to NaN ki jagah 0 aa jayega.
+
+7️⃣ Margins (Grand Total)
+print(pd.pivot_table(
+    df,
+    values="Sales",
+    index="City",
+    columns="Product",
+    aggfunc="sum",
+    margins=True
+))
+
+Output me ek extra row aur column All aayega.
+
+📝 Practice Questions
+Q1
+
+City-wise average sales.
+
+Q2
+
+City + Product wise sales.
+
+Q3
+
+aggfunc="sum"
+
+Q4
+
+aggfunc="count"
+
+Q5
+
+fill_value=0
+
+Q6
+
+margins=True
+
+🎯 Homework
+import pandas as pd
+
+sales = pd.DataFrame({
+    "City": [
+        "Delhi","Delhi",
+        "Indore","Indore",
+        "Bhopal","Bhopal"
+    ],
+    "Category": [
+        "Mobile","Laptop",
+        "Mobile","Laptop",
+        "Mobile","Laptop"
+    ],
+    "Amount": [
+        30000,50000,
+        25000,45000,
+        28000,47000
+    ]
+})
+
+Ab ye sab likho:
+
+# 1
+print(pd.pivot_table(
+    sales,
+    values="Amount",
+    index="City"
+))
+
+# 2
+print(pd.pivot_table(
+    sales,
+    values="Amount",
+    index="City",
+    columns="Category"
+))
+
+# 3
+print(pd.pivot_table(
+    sales,
+    values="Amount",
+    index="City",
+    aggfunc="sum"
+))
+
+# 4
+print(pd.pivot_table(
+    sales,
+    values="Amount",
+    index="City",
+    aggfunc="count"
+))
+
+# 5
+print(pd.pivot_table(
+    sales,
+    values="Amount",
+    index="City",
+    columns="Category",
+    fill_value=0
+))
+
+# 6
+print(pd.pivot_table(
+    sales,
+    values="Amount",
+    index="City",
+    columns="Category",
+    aggfunc="sum",
+    margins=True
+))
+🤖 AI Connection
+
+Suppose ek e-commerce AI company hai.
+
+Raw Data:
+
+City	Category	Sales
+Delhi	Mobile	30000
+Delhi	Laptop	50000
+Indore	Mobile	25000
+
+AI engineer pehle pivot banata hai:
+
+pd.pivot_table(
+    sales,
+    values="Amount",
+    index="City",
+    columns="Category",
+    aggfunc="sum"
+)
+
+Result:
+
+City	Laptop	Mobile
+Delhi	50000	30000
+Indore	45000	25000
+
+Ab AI easily identify kar sakta hai:
+
+Kis city me Laptop zyada bikta hai.
+Kis city me Mobile kam bikta hai.
+
+Ye recommendation systems aur business dashboards me kaam aata hai.
+
+📚 Aaj ka Revision
+
+✅ pivot_table()
+
+✅ index
+
+✅ columns
+
+✅ values
+
+✅ aggfunc
+
+✅ fill_value
+
+✅ margins=True
