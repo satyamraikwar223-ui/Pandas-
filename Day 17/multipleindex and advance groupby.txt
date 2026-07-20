@@ -1,0 +1,274 @@
+🎉 Pandas Course – Day 17/30
+📍 Topic: MultiIndex & Advanced GroupBy
+
+Welcome to Day 17! 🚀
+
+Aaj hum seekhenge MultiIndex aur Advanced groupby().
+
+Ye topic Data Analyst aur Data Scientist interviews me bahut common hai.
+
+🤔 Real-Life Example
+
+Ek company ke paas ye sales data hai:
+
+City	Product	Sales
+Delhi	Laptop	50000
+Delhi	Mobile	30000
+Indore	Laptop	45000
+Indore	Mobile	25000
+Delhi	Laptop	55000
+
+Manager poochta hai:
+
+Delhi me Laptop ki total sales?
+Indore me Mobile ki average sales?
+
+Ek hi groupby("City") se ye mushkil hai.
+
+Isliye hum multiple columns par groupby() karte hain.
+
+Step 1 – Dataset
+import pandas as pd
+
+df = pd.DataFrame({
+    "City": [
+        "Delhi","Delhi","Indore",
+        "Indore","Delhi","Bhopal"
+    ],
+    "Product": [
+        "Laptop","Mobile","Laptop",
+        "Mobile","Laptop","Laptop"
+    ],
+    "Sales": [
+        50000,30000,45000,
+        25000,55000,47000
+    ]
+})
+
+print(df)
+1️⃣ Multi Column GroupBy
+print(df.groupby(["City", "Product"])["Sales"].sum())
+
+Output:
+
+City     Product
+Bhopal   Laptop     47000
+Delhi    Laptop    105000
+          Mobile     30000
+Indore   Laptop     45000
+          Mobile     25000
+
+👉 Is output ko MultiIndex kehte hain.
+
+2️⃣ Mean
+print(df.groupby(
+    ["City","Product"]
+)["Sales"].mean())
+3️⃣ Multiple Aggregations
+print(df.groupby(
+    ["City","Product"]
+)["Sales"].agg(
+    ["sum","mean","max","min","count"]
+))
+
+Output:
+
+City	Product	Sum	Mean	Max	Min	Count
+4️⃣ Reset Index
+
+MultiIndex ko normal DataFrame banana.
+
+result = df.groupby(
+    ["City","Product"]
+)["Sales"].sum().reset_index()
+
+print(result)
+
+Output:
+
+City	Product	Sales
+Delhi	Laptop	105000
+5️⃣ Sort Values
+print(
+    result.sort_values(
+        "Sales",
+        ascending=False
+    )
+)
+6️⃣ as_index=False
+
+Ye reset_index() ka shortcut hai.
+
+print(
+    df.groupby(
+        ["City","Product"],
+        as_index=False
+    )["Sales"].sum()
+)
+7️⃣ Multiple Columns Select
+print(
+    df.groupby("City")[
+        ["Sales"]
+    ].mean()
+)
+8️⃣ Size
+
+Har group me kitni rows hain?
+
+print(
+    df.groupby(
+        ["City","Product"]
+    ).size()
+)
+9️⃣ Value Counts
+print(df["City"].value_counts())
+
+Output:
+
+Delhi     3
+Indore    2
+Bhopal    1
+🔟 Group Filter
+
+Sirf wahi cities jinki average sales 40000 se zyada hai.
+
+print(
+    df.groupby("City")
+      .filter(
+          lambda x:
+          x["Sales"].mean() > 40000
+      )
+)
+📝 Practice Questions
+Q1
+
+City + Product wise sum.
+
+Q2
+
+Mean.
+
+Q3
+
+Multiple aggregations.
+
+Q4
+
+Reset Index.
+
+Q5
+
+Sort by Sales.
+
+Q6
+
+as_index=False
+
+Q7
+
+size()
+
+🎯 Homework
+import pandas as pd
+
+employee = pd.DataFrame({
+    "Department":[
+        "IT","IT","HR",
+        "HR","Finance","Finance"
+    ],
+    "Gender":[
+        "Male","Female",
+        "Male","Female",
+        "Male","Female"
+    ],
+    "Salary":[
+        60000,65000,
+        40000,42000,
+        70000,72000
+    ]
+})
+
+Ab ye sab likho:
+
+# 1
+print(employee.groupby(
+    ["Department","Gender"]
+)["Salary"].sum())
+
+# 2
+print(employee.groupby(
+    ["Department","Gender"]
+)["Salary"].mean())
+
+# 3
+print(employee.groupby(
+    ["Department","Gender"]
+)["Salary"].agg(
+    ["sum","mean","max","min","count"]
+))
+
+# 4
+result = employee.groupby(
+    ["Department","Gender"]
+)["Salary"].sum().reset_index()
+
+print(result)
+
+# 5
+print(result.sort_values(
+    "Salary",
+    ascending=False
+))
+
+# 6
+print(employee.groupby(
+    ["Department","Gender"],
+    as_index=False
+)["Salary"].sum())
+
+# 7
+print(employee.groupby(
+    ["Department","Gender"]
+).size())
+🤖 AI Connection
+
+Socho tum Netflix ke Data Scientist ho.
+
+Dataset:
+
+Country	Genre	Watch Hours
+India	Action	1200
+India	Comedy	900
+USA	Action	3000
+
+Ab AI ko batana hai:
+
+Har Country me har Genre kitna dekha gaya?
+
+df.groupby(
+    ["Country","Genre"]
+)["Watch Hours"].sum()
+
+Is data se:
+
+Recommendation System
+Trending Genres
+Regional Preferences
+
+sab nikale ja sakte hain.
+
+📚 Aaj ka Revision
+
+✅ MultiIndex
+
+✅ groupby(["col1","col2"])
+
+✅ agg()
+
+✅ reset_index()
+
+✅ as_index=False
+
+✅ size()
+
+✅ filter()
