@@ -1,0 +1,254 @@
+🎉 Pandas Course – Day 18/30
+📍 Topic: apply(), map() & applymap() (Data Transformation)
+
+Welcome to Day 18! 🚀
+
+Aaj hum Pandas ke 3 bahut powerful functions seekhenge:
+
+✅ map()
+✅ apply()
+✅ applymap()
+
+Ye teeno data ko transform (badalne) ke liye use hote hain.
+
+AI aur Data Science me ye bahut common hain.
+
+🤔 Real-Life Example
+
+Maan lo marks diye hue hain.
+
+Name	Marks
+Aman	85
+Rohit	92
+Neha	78
+
+Ab principal bolta hai:
+
+Marks ke hisaab se Grade bana do.
+
+Ye kaam apply() se hota hai.
+
+Step 1 – Dataset
+import pandas as pd
+
+df = pd.DataFrame({
+    "Name": ["Aman", "Rohit", "Neha", "Priya"],
+    "Marks": [85, 92, 78, 66],
+    "City": ["Delhi", "Indore", "Bhopal", "Delhi"]
+})
+
+print(df)
+1️⃣ map()
+
+Sirf ek column ke values change karne ke liye.
+
+city_code = {
+    "Delhi": "DL",
+    "Indore": "IN",
+    "Bhopal": "BH"
+}
+
+df["City_Code"] = df["City"].map(city_code)
+
+print(df)
+
+Output
+
+City	City_Code
+Delhi	DL
+Indore	IN
+Bhopal	BH
+2️⃣ apply()
+
+Ek column par function lagana.
+
+def grade(x):
+    if x >= 90:
+        return "A+"
+    elif x >= 80:
+        return "A"
+    elif x >= 70:
+        return "B"
+    else:
+        return "C"
+
+df["Grade"] = df["Marks"].apply(grade)
+
+print(df)
+
+Output
+
+Marks	Grade
+85	A
+92	A+
+78	B
+66	C
+3️⃣ apply() with Lambda
+df["Result"] = df["Marks"].apply(
+    lambda x: "Pass" if x >= 40 else "Fail"
+)
+
+print(df)
+4️⃣ Bonus Marks
+
+Sabko 5 marks extra.
+
+df["New_Marks"] = df["Marks"].apply(
+    lambda x: x + 5
+)
+
+print(df)
+5️⃣ applymap()
+
+⚠️ Note: applymap() poore DataFrame ke har element par function lagata hai.
+
+Example:
+
+num = pd.DataFrame({
+    "A": [1,2],
+    "B": [3,4]
+})
+
+print(
+    num.applymap(lambda x: x * 10)
+)
+
+Output
+
+A	B
+10	30
+20	40
+6️⃣ Multiple Conditions
+df["Scholarship"] = df["Marks"].apply(
+    lambda x: "Yes" if x >= 90 else "No"
+)
+
+print(df)
+7️⃣ Length of Name
+df["Name_Length"] = df["Name"].apply(len)
+
+print(df)
+8️⃣ Upper Case
+df["Upper_Name"] = df["Name"].apply(
+    lambda x: x.upper()
+)
+
+print(df)
+📝 Practice Questions
+Q1
+
+City ko short code me convert karo.
+
+Q2
+
+Marks se Grade banao.
+
+Q3
+
+Result column banao.
+
+Q4
+
+5 marks bonus do.
+
+Q5
+
+Name ki length nikalo.
+
+Q6
+
+Name uppercase me convert karo.
+
+Q7
+
+applymap() se numbers ko double karo.
+
+🎯 Homework
+import pandas as pd
+
+employee = pd.DataFrame({
+    "Name": ["Aman", "Rohit", "Neha", "Priya"],
+    "Department": ["IT", "HR", "Finance", "IT"],
+    "Salary": [60000, 40000, 70000, 65000]
+})
+
+Ab ye sab likho:
+
+# 1
+dept_code = {
+    "IT": "I01",
+    "HR": "H01",
+    "Finance": "F01"
+}
+
+employee["Dept_Code"] = employee["Department"].map(dept_code)
+
+# 2
+employee["Bonus"] = employee["Salary"].apply(
+    lambda x: x * 0.10
+)
+
+# 3
+employee["Tax"] = employee["Salary"].apply(
+    lambda x: x * 0.05
+)
+
+# 4
+employee["High_Salary"] = employee["Salary"].apply(
+    lambda x: "Yes" if x >= 60000 else "No"
+)
+
+# 5
+employee["Upper_Name"] = employee["Name"].apply(
+    lambda x: x.upper()
+)
+
+# 6
+employee["Length"] = employee["Name"].apply(len)
+
+print(employee)
+
+# 7
+num = pd.DataFrame({
+    "A": [1,2,3],
+    "B": [4,5,6]
+})
+
+print(num.applymap(lambda x: x * 2))
+🤖 AI Connection
+
+Socho tum Spam Detection AI bana rahe ho.
+
+Raw data:
+
+Message
+hello
+WIN MONEY
+free Gift
+
+AI ko clean data chahiye.
+
+df["Message"] = df["Message"].apply(
+    lambda x: x.lower().strip()
+)
+
+Output:
+
+Message
+hello
+win money
+free gift
+
+Iske baad AI model ko clean text milta hai.
+
+📚 Aaj ka Revision
+
+✅ map()
+
+✅ apply()
+
+✅ lambda
+
+✅ Custom Function
+
+✅ applymap()
