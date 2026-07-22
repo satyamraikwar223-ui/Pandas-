@@ -1,0 +1,239 @@
+🎉 Pandas Course – Day 19/30
+📍 Topic: Window Functions (cumsum(), cummax(), cummin(), cumprod(), rolling(), expanding())
+
+Welcome to Day 19! 🚀
+
+Aaj hum Pandas ke Window Functions seekhenge.
+
+Ye Data Analysis, Finance, Stock Market, Sales Analytics aur AI Forecasting me bahut use hote hain.
+
+🤔 Real-Life Example
+
+Maan lo ek shop ki 7 din ki sales hai.
+
+Day	Sales
+Mon	100
+Tue	150
+Wed	120
+Thu	180
+Fri	200
+Sat	170
+Sun	220
+
+Ab manager poochta hai:
+
+Ab tak total sales kitni hui?
+Ab tak sabse zyada sale kis din tak hui?
+Last 3 din ki average sales kya hai?
+
+Isi ke liye Window Functions use hote hain.
+
+Step 1 – Dataset
+import pandas as pd
+
+df = pd.DataFrame({
+    "Day": [
+        "Mon","Tue","Wed",
+        "Thu","Fri","Sat","Sun"
+    ],
+    "Sales": [100,150,120,180,200,170,220]
+})
+
+print(df)
+1️⃣ cumsum() (Cumulative Sum)
+
+Har row tak ka total.
+
+df["Running_Total"] = df["Sales"].cumsum()
+
+print(df)
+
+Output
+
+Day	Sales	Running_Total
+Mon	100	100
+Tue	150	250
+Wed	120	370
+Thu	180	550
+2️⃣ cummax()
+
+Ab tak ki highest value.
+
+df["Highest_Till_Now"] = df["Sales"].cummax()
+
+print(df)
+
+Output
+
+Sales	Highest_Till_Now
+100	100
+150	150
+120	150
+180	180
+3️⃣ cummin()
+
+Ab tak ki lowest value.
+
+df["Lowest_Till_Now"] = df["Sales"].cummin()
+
+print(df)
+4️⃣ cumprod()
+
+Running multiplication.
+
+df["Product"] = df["Sales"].cumprod()
+
+print(df)
+
+⚠️ Real life me kam use hota hai, lekin interviews me poocha ja sakta hai.
+
+5️⃣ rolling()
+
+Last 3 days ki average.
+
+df["Rolling_Avg"] = df["Sales"].rolling(3).mean()
+
+print(df)
+
+Output
+
+Sales	Rolling_Avg
+100	NaN
+150	NaN
+120	123.33
+180	150.00
+200	166.67
+
+📌 Pehle 2 rows me 3 values available nahi hain, isliye NaN.
+
+6️⃣ Rolling Sum
+df["Rolling_Sum"] = df["Sales"].rolling(3).sum()
+7️⃣ Rolling Max
+df["Rolling_Max"] = df["Sales"].rolling(3).max()
+8️⃣ expanding()
+
+Start se current row tak average.
+
+df["Expanding_Mean"] = df["Sales"].expanding().mean()
+
+print(df)
+
+Output
+
+Sales	Expanding_Mean
+100	100.00
+150	125.00
+120	123.33
+180	137.50
+
+Difference:
+
+rolling(3) → Sirf last 3 rows.
+expanding() → First row se current row tak.
+📝 Practice Questions
+Q1
+
+Running Total nikalo.
+
+Q2
+
+Running Maximum.
+
+Q3
+
+Running Minimum.
+
+Q4
+
+Rolling Average (window=3).
+
+Q5
+
+Rolling Sum.
+
+Q6
+
+Expanding Mean.
+
+🎯 Homework
+import pandas as pd
+
+sales = pd.DataFrame({
+    "Month": [
+        "Jan","Feb","Mar",
+        "Apr","May","Jun"
+    ],
+    "Revenue": [
+        10000,
+        15000,
+        12000,
+        18000,
+        22000,
+        20000
+    ]
+})
+
+Ab ye sab likho:
+
+# 1
+sales["Running_Total"] = sales["Revenue"].cumsum()
+
+# 2
+sales["Highest"] = sales["Revenue"].cummax()
+
+# 3
+sales["Lowest"] = sales["Revenue"].cummin()
+
+# 4
+sales["Rolling_Avg"] = sales["Revenue"].rolling(3).mean()
+
+# 5
+sales["Rolling_Sum"] = sales["Revenue"].rolling(3).sum()
+
+# 6
+sales["Rolling_Max"] = sales["Revenue"].rolling(3).max()
+
+# 7
+sales["Expanding_Mean"] = sales["Revenue"].expanding().mean()
+
+print(sales)
+🤖 AI Connection
+
+Socho tum Amazon ke Data Scientist ho.
+
+Daily Orders:
+
+Day	Orders
+Mon	100
+Tue	120
+Wed	130
+Thu	300
+
+AI model trend smooth karne ke liye:
+
+df["Trend"] = df["Orders"].rolling(3).mean()
+
+Agar trend lagataar badh raha hai, to AI predict karega ki agle kuch din orders aur badh sakte hain.
+
+Isi concept ka use:
+
+📈 Stock Market
+🌦 Weather Prediction
+📦 Demand Forecasting
+🤖 Time-Series AI Models
+
+me hota hai.
+
+📚 Aaj ka Revision
+
+✅ cumsum()
+
+✅ cummax()
+
+✅ cummin()
+
+✅ cumprod()
+
+✅ rolling()
+
+✅ expanding()
