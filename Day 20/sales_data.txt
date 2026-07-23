@@ -1,0 +1,299 @@
+🎉 Pandas Course – Day 20/30 (🔥 Milestone Project)
+📍 Topic: Real Sales Data Analysis Project
+
+🎉 Congratulations!
+
+Aaj hum Day 20 par pahunch gaye hain.
+
+Ab tak tumne jo bhi Pandas concepts seekhe hain, aaj unhe ek real-world project me use karoge.
+
+Ye project Data Analyst Internship level ka hai.
+
+🎯 Project Goal
+
+Ek company ka sales data analyze karna aur report banana.
+
+Hum seekhenge:
+
+✅ CSV
+✅ Data Cleaning
+✅ Missing Values
+✅ Filtering
+✅ GroupBy
+✅ Pivot Table
+✅ Date Handling
+✅ apply()
+✅ Rolling Average
+✅ Running Total
+Step 1 – Dataset
+
+File ka naam:
+
+sales_data.csv
+
+CSV Data:
+
+Order_ID,Date,City,Category,Sales
+101,2026-01-05,Delhi,Laptop,50000
+102,2026-01-08,Delhi,Mobile,30000
+103,2026-02-10,Indore,Laptop,45000
+104,2026-02-15,Indore,Mobile,25000
+105,2026-03-02,Bhopal,Laptop,47000
+106,2026-03-12,Bhopal,Mobile,
+107,2026-04-05,Delhi,Laptop,52000
+108,2026-04-18,Indore,Mobile,27000
+109,2026-05-01,Bhopal,Laptop,49000
+110,2026-05-20,Delhi,Mobile,32000
+
+👉 Is data ko sales_data.csv naam se save karo.
+
+Step 2 – Read CSV
+import pandas as pd
+
+df = pd.read_csv("sales_data.csv")
+
+print(df)
+🎯 Task 1
+
+Basic Information
+
+print(df.head())
+
+print(df.info())
+
+print(df.describe())
+🎯 Task 2
+
+Missing Values
+
+print(df.isnull().sum())
+
+Fill Missing Sales
+
+df["Sales"] = df["Sales"].fillna(df["Sales"].mean())
+🎯 Task 3
+
+Convert Date
+
+df["Date"] = pd.to_datetime(df["Date"])
+
+New Columns
+
+df["Month"] = df["Date"].dt.month_name()
+
+df["Year"] = df["Date"].dt.year
+🎯 Task 4
+
+Highest Sale
+
+print(df["Sales"].max())
+
+Lowest Sale
+
+print(df["Sales"].min())
+
+Average Sale
+
+print(df["Sales"].mean())
+🎯 Task 5
+
+Filter
+
+Laptop Sales
+
+print(df[df["Category"] == "Laptop"])
+
+Delhi Sales
+
+print(df[df["City"] == "Delhi"])
+🎯 Task 6
+
+GroupBy
+
+City Wise Sales
+
+print(
+    df.groupby("City")["Sales"].sum()
+)
+
+Category Wise Sales
+
+print(
+    df.groupby("Category")["Sales"].mean()
+)
+🎯 Task 7
+
+Pivot Table
+
+print(
+    pd.pivot_table(
+        df,
+        values="Sales",
+        index="City",
+        columns="Category",
+        aggfunc="sum",
+        margins=True
+    )
+)
+🎯 Task 8
+
+Performance Column
+
+df["Performance"] = df["Sales"].apply(
+    lambda x: "High"
+    if x >= 40000
+    else "Low"
+)
+🎯 Task 9
+
+Running Total
+
+df["Running_Total"] = df["Sales"].cumsum()
+
+rolling average
+
+df["Rolling_Avg"] = df["Sales"].rolling(3).mean()
+🎯 Task 10
+
+Final Report
+
+print(df)
+⭐ Bonus Challenge 1
+
+Create Grade
+
+def grade(x):
+    if x >= 50000:
+        return "A"
+
+    elif x >= 40000:
+        return "B"
+
+    else:
+        return "C"
+
+df["Grade"] = df["Sales"].apply(grade)
+⭐ Bonus Challenge 2
+
+Top 3 Sales
+
+print(
+    df.nlargest(
+        3,
+        "Sales"
+    )
+)
+
+Bottom 3
+
+print(
+    df.nsmallest(
+        3,
+        "Sales"
+    )
+)
+⭐ Bonus Challenge 3
+
+Monthly Sales
+
+print(
+    df.groupby("Month")["Sales"].sum()
+)
+🤖 AI Connection
+
+Socho tum Amazon me Data Analyst ho.
+
+Roz lakhon orders aate hain.
+
+Machine Learning model ko train karne se pehle tum:
+
+Missing Values remove karoge.
+Date Features banaoge.
+Category-wise Sales dekhoge.
+Rolling Average se trend dekhoge.
+Performance label banaoge.
+
+Yahi process Feature Engineering kehlata hai.
+
+AI ki success ka bahut bada hissa isi stage par depend karta hai.
+
+🏆 Mini Project Checklist
+
+Project complete hone ke baad tumne use kiya hoga:
+
+✅ read_csv()
+
+✅ head()
+
+✅ info()
+
+✅ describe()
+
+✅ fillna()
+
+✅ to_datetime()
+
+✅ .dt.month_name()
+
+✅ groupby()
+
+✅ pivot_table()
+
+✅ apply()
+
+✅ cumsum()
+
+✅ rolling()
+
+🎯 Homework
+
+📁 File ka naam:
+
+sales_analysis_project.py
+
+Isme upar ke 10 Tasks aur 3 Bonus Challenges complete karo.
+
+🌟 Extra Practice (10 Minutes)
+
+Dataset me ek naya column add karo:
+
+df["Profit"] = [
+    12000,
+    8000,
+    10000,
+    7000,
+    11000,
+    9000,
+    13000,
+    7500,
+    11500,
+    8500
+]
+
+Ab:
+
+City-wise total Profit.
+Category-wise average Profit.
+Profit ka Running Total.
+Profit ka Rolling Average (window=3).
+Sales aur Profit ka Pivot Table.
+📈 Course Progress
+████████████████████░░░░░░░░░
+
+20 / 30 Days Complete
+67% Completed
+🏅 Milestone Achievement
+
+🎉 20 Days Complete!
+
+Ab tum Pandas ke basic aur intermediate concepts cover kar chuke ho.
+
+Day 21–30 me hum advanced topics, visualization, real datasets aur interview-level projects karenge.
+
+🚀 Kal Day 21
+
+Hum Data Visualization with Pandas + Matplotlib seekhenge.
+
+Usme tum graphs banana seekhoge, jo Data Analyst interviews aur dashboards me bahut important skill hai.
+
+ok

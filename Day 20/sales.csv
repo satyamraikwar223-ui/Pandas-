@@ -1,0 +1,11 @@
+Order_ID,Date,City,Category,Sales
+101,2026-01-05,Delhi,Laptop,50000
+102,2026-01-08,Delhi,Mobile,30000
+103,2026-02-10,Indore,Laptop,45000
+104,2026-02-15,Indore,Mobile,25000
+105,2026-03-02,Bhopal,Laptop,47000
+106,2026-03-12,Bhopal,Mobile,
+107,2026-04-05,Delhi,Laptop,52000
+108,2026-04-18,Indore,Mobile,27000
+109,2026-05-01,Bhopal,Laptop,49000
+110,2026-05-20,Delhi,Mobile,32000
